@@ -7,8 +7,6 @@ if (!empty($_FILES['file'])) {
             $uploaded[] = $name;
         }
     }
-
-    print_r($uploaded);
 }
 
 ?>
@@ -30,6 +28,11 @@ if (!empty($_FILES['file'])) {
 <div id="uploaded">
     <?php
 
+    if (!empty($uploaded)) {
+        foreach ($uploaded as $name) {
+            echo '<div><a href="images/', $name, '">', $name, '</a></div>';
+        }
+    }
 
     ?>
 </div>
@@ -37,8 +40,8 @@ if (!empty($_FILES['file'])) {
 <div>
     <form action="" method="post" enctype="multipart/form-data">
         <div>
-            <input type="file" name="file[]" multiple="multiple"/>
-            <input type="submit" value="Upload"/>
+            <input type="file" id="file" name="file[]" multiple="multiple"/>
+            <input type="submit" id="submit" value="Upload"/>
         </div>
 
     </form>
